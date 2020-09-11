@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+로그인 성공!<br>
+{{user.username}}님 환영합니다.
+{% else %}
+<h1>이곳은 로그인 페이지</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input name="username" type="text" placeholder="아이디"><br>
+    <input name="password" type="password" placeholder="비밀번호"><br>
+    <input type="submit" value="로그인">
+</form>
+
+
+{% endif %}
+
+{% endblock %}
