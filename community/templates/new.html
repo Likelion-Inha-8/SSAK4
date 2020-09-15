@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<form action="{% url 'createfeed' %}" method="POST" enctype="multipart/form-data"> 
+    {% csrf_token %}
+    <input type="file" name="imgs" multiple>
+
+    <div>
+        <label for="content">게시글</label><br>
+        <textarea name="content" id="content" cols="30" rows="10"></textarea>
+    </div>
+
+    <input type="submit" value="글쓰기">
+</form>
+{% endblock %}

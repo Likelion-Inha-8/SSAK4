@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<form action="{% url 'feedupdate' onepost.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="imgs" multiple>
+
+    <label for="content">게시글</label><br>
+    <textarea name="content" id="content" cols="30" rows="10">{{onepost.content}}</textarea>
+    <br><br>
+ 
+    <button type="submit">수정하기</button>
+ 
+</form>
+ 
+<a href="{% url 'detail' onepost.id %}">돌아가기</a>
+{% endblock %}
