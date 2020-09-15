@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: #fbfbfb;
+}
+
+
+
+nav > div{
+    background-color:#ecf3f0;
+    padding: 2%;
+    
+}
+
+nav a {
+    text-decoration: none;
+    color: #28daaf;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+nav a:hover{
+    text-decoration: none;
+    color: #28daaf;
+}
+
+nav a:nth-child(2){
+    margin-left: 100px;
+}
+
+.login{
+    text-align: center;
+    padding: 50px;
+    margin-top: 30px;
+}
+
+.signup{
+    padding: 50px;
+    margin-top: 30px;
+}
+
+.login img {
+    margin: 10px;
+}
+
+.login input {
+    width: 350px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px;
+    border: 1px solid #f0f0f0;
+}
+
+.login input[type=submit]{
+    font-weight: 900;
+    color: #28daaf;
+    background-color: #fbfbfb;
+    margin-bottom: 30px;
+}
+
+.login div, a{
+    color: #28daaf;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.login a {
+    font-weight: 900;
+    font-size: 18px;
+    color: #28daaf;
+}
+
+.login a:hover{
+    text-decoration: none;
+    color: #28daaf;
+}
+
+.signup input{
+    width: 350px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    border: 1px solid #f0f0f0;
+}
+
+.signup input[type=radio]{
+    width: 15px;
+}
+
+.birth input{
+    width: 108px;
+}
+
+.container{
+    margin: 100px;
+    border: 1px solid #f0f0f0;
+    padding: 0;
+}
+
+.content {
+    margin: 0;
+    width: 100%;
+    height: 300px;
+    background-color: #ecf3f0;
+    padding: 0;
+}
+
+.content img{
+    width: 100%;
+}
+
+.footer p{
+    margin: 5px;
+}

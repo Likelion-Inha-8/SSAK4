@@ -2,16 +2,20 @@
 {% load static %}
 
 {% block content %}
-<h1>이곳은 홈 화면</h1>
-{% for feed in feeds.all%}
-<div>
-    {% for photo in feed.photo_set.all%}
-        <img src="{{photo.image.url}}" width="200"><br>
-    {% endfor %}
+
+<section class="container">
+    {% for feed in feeds.all%}
+    <div>
+        {% for photo in feed.photo_set.all%}
+            <img src="{{photo.image.url}}" width="200"><br>
+        {% endfor %}
 
     <h1><a href="{% url 'detail' feed.id %}">{{feed.content}}</a> </h1>
     <p> {{feed.created_at}}</p>
     <p> {{feed.Like_Num}}</p>
 </div>
 {%endfor%}
+    
+</section>
+
 {% endblock %}
