@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
- 
+{% load static %}
+
 {% block content %}
+
 <section class="container">
+    {% for feed in feeds.all%}
+    <div>
+        {% for photo in feed.photo_set.all%}
+            <img src="{{photo.image.url}}" width="200"><br>
+        {% endfor %}
+
+    <h1><a href="{% url 'detail' feed.id %}">{{feed.content}}</a> </h1>
+    <p> {{feed.created_at}}</p>
+    <p> {{feed.Like_Num}}</p>
+</div>
+{%endfor%}
     
-    <div class="content">
-        <img src="https://lh3.googleusercontent.com/proxy/zEVNKkkbchyLTyc_BxmCjEo5DgpBZ29rJBI5BdrSF65RF14zLpLWiS-16H7JiBWD5l5ewqBbl_zwtpAhFuB5s8nt3cxF8NXI4rHPSNEwtDnDGkwStOIt2wcjJZcIGSU" alt="">
-        <div>오늘 공원에 갔다</div>
-        <div class="spot">위치</div>
-    </div>
-    <div class="footer">
-        <p class=" pull-left">♡</p>
-        <p class=" pull-left">609</p>
-        <p class=" pull-left">120</p>
-        <p class=" pull-left">SHARE</p>
-    </div>
 </section>
+
 {% endblock %}
