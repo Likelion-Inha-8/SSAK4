@@ -5,16 +5,18 @@
 로그인 성공!<br>
 {{user.username}}님 환영합니다.
 {% else %}
-<h1>이곳은 로그인 페이지</h1>
+<section class="login">
+    <img src="/static/images/imagelogo.png" alt="logo">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input name="username" type="text" placeholder="ID"><br>
+        <input name="password" type="password" placeholder="PASSWORD"><br>
+        <input type="submit" value="LOGIN">
+    </form>
 
-<form action="" method="POST">
-    {% csrf_token %}
-    <input name="username" type="text" placeholder="아이디"><br>
-    <input name="password" type="password" placeholder="비밀번호"><br>
-    <input type="submit" value="로그인">
-</form>
-
-
+    <div>아직 멍팟의 회원이 아니신가요? 함께해요 멍!</div>  
+    <a href="{%url 'signup'%}">회원가입하러가기</a>
+</section>
 {% endif %}
 
 {% endblock %}
