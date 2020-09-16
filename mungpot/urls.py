@@ -25,14 +25,15 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',community.views.home, name="home"),
-    path('account/', include(account.urls)),
-    path('community/', include(community.urls)),
-    path('new/', community.views.new, name='new'),
-    path('createfeed/', community.views.createfeed, name='createfeed'),
+    path('account', include(account.urls)),
+    path('community', include(community.urls)),
+    path('new', community.views.new, name='new'),
+    path('createfeed', community.views.createfeed, name='createfeed'),
     path('detail/<int:feed_id>',community.views.detail, name='detail'),
     path('edit/<int:feed_id>',community.views.edit,name="edit"),
     path('feedupdate/<int:feed_id>',community.views.feedupdate,name="feedupdate"),
     path('postdelete/<int:feed_id>',community.views.feeddelete,name="delete"),
     path('commentcreate/<int:feed_id>', community.views.commentcreate, name='commentcreate'),
-    path('commentdelete/<int:feed_id>/<int:comment_id>', community.views.commentdelete, name='commentdelete')
+    path('commentdelete/<int:feed_id>/<int:comment_id>', community.views.commentdelete, name='commentdelete'),
+    path('profile', community.views.profile, name="profile"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

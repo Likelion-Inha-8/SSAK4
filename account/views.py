@@ -28,7 +28,7 @@ def signup(request):
         dog_birth_year =request.POST["dog_birth_year"]
         dog_birth_month =request.POST["dog_birth_month"]
         dog_birth_day=request.POST["dog_birth_day"]
-        dog_Image =request.POST["dog_Image"]
+        dog_Image =request.FILES["dog_Image"]
 
         user = User.objects.create_user(username,"",password)
         user.dog_name=dog_name

@@ -7,6 +7,10 @@ def home(request):
     feeds = Feed.objects
     return render(request, 'home.html', {'feeds' : feeds})
 
+def profile(request):
+    feeds = Feed.objects
+    return render(request, 'profile.html',{'feeds':feeds})
+
 def new(request):
     return render(request, 'new.html')
 
@@ -14,7 +18,9 @@ def createfeed(request):
     if(request.method=='POST'): 
         newfeed=Feed()          
         newfeed.content=request.POST['content']
+        newfeed.writer = request.user
         newfeed.save()
+        
 
         for img in request.FILES.getlist('imgs'):
             # Photo 객체를 하나 생성한다.
@@ -39,6 +45,7 @@ def edit(request,feed_id):
 def feedupdate(request,feed_id):
     editfeed=get_object_or_404(Feed,pk=feed_id)
     editfeed.content=request.POST['content']
+    newfeed.writer = request.user
     editfeed.save()
 
     for img in request.FILES.getlist('imgs'):
@@ -69,3 +76,4 @@ def commentdelete(req, feed_id, comment_id):
     comment = get_object_or_404(FeedComment,id=comment_id,feed_id=feed_id)
     comment.delete()
     return redirect('/detail/'+str(feed_id))
+

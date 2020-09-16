@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
  
 {% block content %}
+
+{% if user.is_authenticated %}
 <form action="{% url 'createfeed' %}" method="POST" enctype="multipart/form-data"> 
     {% csrf_token %}
     <input type="file" name="imgs" multiple>
@@ -12,4 +14,9 @@
 
     <input type="submit" value="글쓰기">
 </form>
+{% else %}
+<h1>로그인하세요</h1>
+{% endif %}
+
+
 {% endblock %}
