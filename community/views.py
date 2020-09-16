@@ -18,6 +18,7 @@ def createfeed(request):
     if(request.method=='POST'): 
         newfeed=Feed()          
         newfeed.content=request.POST['content']
+        newfeed.location=request.POST['location']
         newfeed.writer = request.user
         newfeed.save()
         

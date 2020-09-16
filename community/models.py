@@ -4,6 +4,7 @@ from mungpot import settings
 # Create your models here.
 class Feed(models.Model):
     writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    location = models.CharField(max_length=50,null=True, blank=True)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

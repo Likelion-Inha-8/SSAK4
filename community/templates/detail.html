@@ -6,6 +6,7 @@
 {% endfor %}
 <h1>게시글 : {{onepost.content}}</h1>
 <p>작성 시간 : {{onepost.created_at}}</p>
+<p>위치 : {{onepost.location}}</p>
 
 {% if request.user == onepost.writer %}
 <a href="{% url 'edit' onepost.id %}">수정</a>
