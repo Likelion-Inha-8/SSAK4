@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
  
 {% block content %}
+
+{% if user.is_authenticated %}
 <form action="{% url 'createfeed' %}" method="POST" enctype="multipart/form-data"> 
     {% csrf_token %}
     <input type="file" name="imgs" multiple>
@@ -9,7 +11,15 @@
         <label for="content">게시글</label><br>
         <textarea name="content" id="content" cols="30" rows="10"></textarea>
     </div>
-
+    <div>
+        <label for="location">위치</label><br>
+        <input type="text" name="location" id="location" cols="30" rows="1"></input>
+    </div>
     <input type="submit" value="글쓰기">
 </form>
+{% else %}
+<h1>로그인하세요</h1>
+{% endif %}
+
+
 {% endblock %}

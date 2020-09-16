@@ -6,11 +6,18 @@
 {% endfor %}
 <h1>게시글 : {{onepost.content}}</h1>
 <p>작성 시간 : {{onepost.created_at}}</p>
+<p>위치 : {{onepost.location}}</p>
+
+{% if request.user == onepost.writer %}
 <a href="{% url 'edit' onepost.id %}">수정</a>
 <a href="{% url 'delete' onepost.id %}">삭제</a>
+{% endif %}
+
 <a href="{% url 'home' %}">홈으로</a>
 
-<form action="{% url 'commentcreate' onepost.id %}" method="POST">
+
+{% if user.is_authenticated %}
+  <form action="{% url 'commentcreate' onepost.id %}" method="POST">
     {% csrf_token %}
     <div>
         <label for="comment_content">댓글</label><br>
@@ -18,12 +25,15 @@
     </div>
     <button type="submit">댓글쓰기</button>
   </form>
+{% endif %}
  
   {% for c in comments %}
   <div>
     <p>{{ c.content }}</p>
     <p>{{ c.created_at }}</p>
-    <a href="{%url 'commentdelete' onepost.id c.id %}">삭제</a>
+    {% if request.user == onepost.writer %}
+      <a href="{%url 'commentdelete' onepost.id c.id %}">삭제</a>
+    {% endif %}
   </div>
   {%endfor%}
 {% endblock %}

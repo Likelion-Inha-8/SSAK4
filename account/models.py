@@ -10,4 +10,4 @@ class User(AbstractUser):
     dog_birth_year = models.IntegerField(null=True, blank=True)
     dog_birth_month = models.IntegerField(null=True, blank=True)
     dog_birth_day = models.IntegerField(null=True, blank=True)
-    dog_Image = models.ImageField(null=True)
+    dog_Image = models.ImageField(upload_to='images_profile', blank=True, null=True)

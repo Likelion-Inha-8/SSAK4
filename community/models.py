@@ -1,7 +1,10 @@
 from django.db import models
+from mungpot import settings
 
 # Create your models here.
 class Feed(models.Model):
+    writer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    location = models.CharField(max_length=50,null=True, blank=True)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -19,4 +22,4 @@ class FeedComment(models.Model):
 
 class Photo(models.Model):
     feed = models.ForeignKey(Feed, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    image = models.ImageField(upload_to='images_community/', blank=True, null=True)

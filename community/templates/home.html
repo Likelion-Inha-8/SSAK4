@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 
 {% block content %}
 
@@ -7,12 +6,12 @@
     {% for feed in feeds.all%}
     <div>
         {% for photo in feed.photo_set.all%}
-            <img src="{{photo.image.url}}" width="200"><br>
+            <img src="{{photo.image.url}}" width="300" height="300"><br>
         {% endfor %}
 
     <h1><a href="{% url 'detail' feed.id %}">{{feed.content}}</a> </h1>
-    <p> {{feed.created_at}}</p>
-    <p> {{feed.Like_Num}}</p>
+    <p> 작성시간 : {{feed.created_at|date:'Y년 m월 d일 H시i분' }}</p>
+    <p> 작성자 : {{feed.writer}}</p>
 </div>
 {%endfor%}
     
