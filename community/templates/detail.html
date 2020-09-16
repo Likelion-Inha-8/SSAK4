@@ -15,8 +15,8 @@
 <a href="{% url 'home' %}">홈으로</a>
 
 
-
-<form action="{% url 'commentcreate' onepost.id %}" method="POST">
+{% if user.is_authenticated %}
+  <form action="{% url 'commentcreate' onepost.id %}" method="POST">
     {% csrf_token %}
     <div>
         <label for="comment_content">댓글</label><br>
@@ -24,6 +24,7 @@
     </div>
     <button type="submit">댓글쓰기</button>
   </form>
+{% endif %}
  
   {% for c in comments %}
   <div>
