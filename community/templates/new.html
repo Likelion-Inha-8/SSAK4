@@ -3,22 +3,27 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<form action="{% url 'createfeed' %}" method="POST" enctype="multipart/form-data"> 
-    {% csrf_token %}
-    <input type="file" name="imgs" multiple>
-
-    <div>
-        <label for="content">게시글</label><br>
-        <textarea name="content" id="content" cols="30" rows="10"></textarea>
-    </div>
-    <div>
-        <label for="location">위치</label><br>
-        <input type="text" name="location" id="location" cols="30" rows="1"></input>
-    </div>
-    <input type="submit" value="글쓰기">
-</form>
+<section class="new">
+    <div>새 글 쓰기</div>
+    <form action="{% url 'createfeed' %}" method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <input type="file" name="imgs" class="form-control" multiple>
+        <br>
+        <div class="form-group">
+            <label for="content">내용</label><br>
+            <textarea name="content" class="form-control" id="content" cols="30" rows="10"></textarea>
+        </div><br>
+        <div>
+            <label for="location">위치</label><br>
+            <input type="text" class="form-control" name="location" id="location" cols="30" rows="1"></input>
+        </div>
+        <input type="submit" class="form-control" value="글쓰기">
+    </form>
+</section>
 {% else %}
-<h1>로그인하세요</h1>
+<script>
+    alert('로그인하세요');
+</script>
 {% endif %}
 
 
