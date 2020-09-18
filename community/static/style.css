@@ -4,20 +4,27 @@
     border: 0;
     vertical-align: baseline;
     font-family: 'Nanum Gothic', sans-serif;
+    overflow-x: hidden;
 }
 
 body {
     width: 100%;
     height: 100%;
-    background-color: #fbfbfb;
+    padding: 100px;
 }
 
-
+nav {
+    z-index: 999;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
 
 nav > div{
     background-color:#ecf3f0;
-    padding: 2%;
-    
+    padding: 20px;
 }
 
 nav a {
@@ -26,6 +33,10 @@ nav a {
     margin: 0 15px;
     font-weight: 600;
     font-size: 16px;
+}
+
+nav img {
+    width: 100px;
 }
 
 nav a:hover{
@@ -37,19 +48,11 @@ nav a:nth-child(2){
     margin-left: 100px;
 }
 
+
 .login{
     text-align: center;
     padding: 50px;
     margin-top: 30px;
-}
-
-.signup{
-    padding: 50px;
-    margin-top: 30px;
-}
-
-.login img {
-    margin: 10px;
 }
 
 .login input {
@@ -85,41 +88,181 @@ nav a:nth-child(2){
     color: #28daaf;
 }
 
+.login img {
+    width: 120px;
+    margin: 10px;
+}
+
+.signup {
+    width: 425px;
+    margin-top: 50px;
+}
+
 .signup input{
-    width: 350px;
     height: 50px;
     padding: 10px;
     border-radius: 10px;
-    margin: 5px 0;
-    border: 1px solid #f0f0f0;
+}
+
+.signup input[type=file]{
+    display: inline;
+}
+
+
+.signup section{
+    margin: 0 auto;
+    font-size: 20px;
+    color: #28daaf;
+    display: block;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    clear: both;
+}
+
+.signup img {
+    width: 120px;
+}
+
+.signup input[type=number]{
+    border: 1px solid #d1d1d1;
+    width: 100px;
 }
 
 .signup input[type=radio]{
-    width: 15px;
-}
-
-.birth input{
-    width: 108px;
-}
-
-.container{
-    margin: 100px;
-    border: 1px solid #f0f0f0;
-    padding: 0;
-}
-
-.content {
     margin: 0;
-    width: 100%;
-    height: 300px;
-    background-color: #ecf3f0;
-    padding: 0;
+    height: 18px;
 }
 
-.content img{
-    width: 100%;
+.new, .detail {
+    width: 650px;
+    margin: 50px auto;
 }
 
+.new div:first-child {
+    font-size: 30px;
+    margin: 25px auto;
+    font-weight: 700;
+    color: #28daaf;
+}
+
+.new input[type=submit]{
+    font-weight: 900;
+    color: #28daaf;
+    background-color: #fbfbfb;
+    margin-top: 30px;
+}
+
+.new a{
+    color: darkgray;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 3px;
+    font-size: 15px;
+}
+
+.new a:hover {
+    text-decoration: none;
+    font-weight: 700;
+    color: #28daaf;
+}
+
+.detail input:not([type=sumbit]) {
+    width: 500px;
+}
+.detail input[type=submit]{
+    width: 100px;
+    font-weight: 900;
+    color: #28daaf;
+    background-color: #fbfbfb;
+}
+
+.detail img {
+    width: 100%;
+    padding: 25px 0;
+}
+
+.deatail .header a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #d1d1d1;
+}
+
+.detail .header a:hover {
+    text-decoration: none;
+    color: #28daaf;
+    font-weight: 700;
+}
+
+.detail .spot img{
+    width: 20px;
+}
+
+.detail .spot div{
+    font-size: 20px;
+    line-height: 72px;
+    margin-left: 3px;
+}
+
+.detail .content {
+    font-size: 20px;
+    margin: 10px;
+}
+
+.detail .date {
+    font-size: 15px;
+    
+}
+
+.detail .header {
+    text-align: right;
+    
+}
+
+.detail .header a:hover {
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.detail .header a {
+    color: darkgray;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.comment input {
+    margin: 5px;
+}
+
+.comment-list {
+    margin: 7px;
+    border-bottom: 1px solid #d1d1d1;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+}
+
+.comment-list .content {
+    font-size: 15px;
+    margin: 3px;
+}
+
+.comment-list .date {
+    font-size: 13px;
+    margin: 3px;
+}
+
+.comment-list a {
+    color: darkgray;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 3px;
+}
+
+.comment-list a:hover {
+    text-decoration: none;
+    font-weight: 700;
+    color: #28daaf;
+}
 .footer p{
     margin: 5px;
 }

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
+    <link rel="shortcut icon" href="../static/images/favicon.ico"/>
 </head>
 <body>
     <nav>
@@ -25,11 +25,10 @@
             {% endif %}
         </div>
     </nav>
-
-    <div>
-    {% block content %}
-    {% endblock %}
-    </div>
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
     
 </body>
 </html>

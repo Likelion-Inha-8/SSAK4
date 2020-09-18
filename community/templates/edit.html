@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
  
 {% block content %}
+<section class="new">
+    <div>수정하기</div>
 <form action="{% url 'feedupdate' onepost.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="imgs" multiple>
+    <div></div>
+    <input type="file" name="imgs" class="form-control" multiple>
+    <br>
+    <div>
+        <label for="content">내용</label><br>
+        <textarea name="content" class="form-control" id="content" cols="30" rows="10">{{onepost.content}}</textarea>
+    </div>
 
-    <label for="content">게시글</label><br>
-    <textarea name="content" id="content" cols="30" rows="10">{{onepost.content}}</textarea>
-    <br><br>
- 
-    <button type="submit">수정하기</button>
+    <!-- 위치는 못 수정하나? -->
+    <input type="submit" class="form-control" value="수정하기">
  
 </form>
- 
+ <br>
 <a href="{% url 'detail' onepost.id %}">돌아가기</a>
+</section>
 {% endblock %}
