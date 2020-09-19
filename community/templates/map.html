@@ -2,18 +2,137 @@
 
 {% block content %}
 
+<head>
+	<meta charset="utf-8">
 
-<div class="container" style="margin-top:20px">
-	<div id="map" style="width:100%; height:400px; margin:0 auto;"></div>
-</div>
+</head>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5c706f6062f49ce6240223336321feee"></script>
+<body>
+	<div class="container" style="margin-top:20px; padding-top:20px;">
+		<input type="text" class="form-control" name="search-bar" id="search-bar" cols="30" rows="1">
+
+		<input type="button" value="검색" id="search-btn">
+		<div id="map" style="width:100%;height:350px;"></div>
+	</div>
+
+	<div class="container" style="margin-top:20px; padding-top:20px; background-color:white;">
+		{% for feed in feeds.all reversed %}
+		{% for photo in feed.photo_set.all%}
+		<div class="profile_img_container">
+			<div class="img_figure">
+				<a href="{% url 'detail' feed.id %}" style="margin:0px;">
+					<img src="{{photo.image.url}}" class="profile_img">
+				</a>
+			</div>
+		</div>
+		{% endfor %}
+		{%endfor%}
+	</div>
+
+	<div id="facility_lat"style="display: none" >
+		{% for feed in feeds.all reversed %}
+		{{feed.lat}},
+		{% endfor %}
+	</div>
+	<div id="facility_lng"style="display: none" >
+		{% for feed in feeds.all reversed %}
+		{{feed.lng}},
+		{% endfor %}
+	</div>
+	<div id="facility_title"style="display: none" >
+		{% for feed in feeds.all reversed %}
+		{{feed.title}},
+		{% endfor %}
+	</div>
+	<div id="facility_location"style="display: none" >
+		{% for feed in feeds.all reversed %}
+		{{feed.location}},
+		{% endfor %}
+	</div>
+	
+
+
+
+
+
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=028e8506c4c13242bcf475d56f5a3ef1&libraries=services"></script>
 	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
-		var map = new kakao.maps.Map(container, options);
-    </script>
+		var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+			mapOption = {
+				center: new kakao.maps.LatLng(37.449403, 126.65346), // 지도의 중심좌표
+				level: 3 // 지도의 확대 레벨
+			};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		var ps = new kakao.maps.services.Places();
+
+		//엔터시 검색
+		let search_bar = document.querySelector("#search-bar");
+		let search_btn = document.querySelector("#search-btn");
+		console.log(search_bar);
+		console.log(search_btn);
+
+		search_btn.addEventListener("click", () => {
+			let keyword = search_bar.value;
+			if (keyword) {
+				console.log(keyword + "검색하셨습니다");
+				keywordSearch(keyword);
+			}
+			else {
+				alert("검색어를 입력하세요");
+			}
+		});
+
+		function keywordSearch(keyword) {
+			ps.keywordSearch(keyword, keywordSearchCallback);
+		}
+
+
+
+
+
+		var list_lat = document.getElementById("facility_lat").innerText.split(',');
+		var list_lng = document.getElementById("facility_lng").innerText.split(',');
+		var list_title = document.getElementById("facility_title").innerText.split(',');
+		var list_location = document.getElementById("facility_location").innerText.split(',');
+
+
+		for (var idx = 0; idx < list_lat.length; idx++) {
+			var data_lat = list_lat[idx];
+			var data_lng = list_lng[idx];
+			var data_title = list_title[idx];
+			displayMarker(list_lat[idx], list_lng[idx], list_title[idx]);
+			//console.log(list_lat[idx], list_lng[idx])
+		}
+
+
+		function keywordSearchCallback(data, status, pagination) {
+			if (status === kakao.maps.services.Status.OK) {
+				let center = new kakao.maps.LatLng(data[0].y, data[0].x)
+				map.setCenter(center);
+
+			}
+		}
+
+		function displayMarker(y, x, z) {
+			// 마커를 생성하고 지도에 표시합니다
+			var marker = new kakao.maps.Marker({
+				map: map,
+				position: new kakao.maps.LatLng(y, x)
+			});
+
+			// 마커에 클릭이벤트를 등록합니다
+			kakao.maps.event.addListener(marker, 'click', function () {
+				// 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+				infowindow.setContent('<div style="padding:5px;font-size:12px;">' +z +'</div>');
+				infowindow.open(map, marker);
+			});
+		}
+
+
+	</script>
+</body>
 {% endblock %}
