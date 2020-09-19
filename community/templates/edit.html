@@ -1,23 +1,35 @@
 {% extends 'base.html' %}
  
 {% block content %}
+<section class="container">
 <section class="new">
     <div>수정하기</div>
 <form action="{% url 'feedupdate' onepost.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <div></div>
-    <input type="file" name="imgs" class="form-control" multiple>
+    {% for photo in onepost.photo_set.all%}
+        <img src="{{photo.image.url}}" width="400" style="display:block; margin:0 auto;"><br>
+    {% endfor %}
+    <br>
+    <div>
+        <label for="title">내용</label><br>
+        <input type="text" class="form-control" id="title" name="title" cols="30" rows="1" value="{{onepost.title}}">
+    </div>
     <br>
     <div>
         <label for="content">내용</label><br>
         <textarea name="content" class="form-control" id="content" cols="30" rows="10">{{onepost.content}}</textarea>
     </div>
+    <br>
+    <div>
+        <label for="location">위치</label><br>
+        <input type="text" class="form-control" name="location" id="location" cols="30" rows="1" value="{{onepost.location}}">
+    </div>
 
-    <!-- 위치는 못 수정하나? -->
     <input type="submit" class="form-control" value="수정하기">
  
 </form>
  <br>
 <a href="{% url 'detail' onepost.id %}">돌아가기</a>
+</section>
 </section>
 {% endblock %}

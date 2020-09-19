@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
  
 {% block content %}
+<section class="container">
 <section class="detail">
   <div class="header">
     {% if request.user == onepost.writer %}
@@ -18,7 +19,8 @@
       <img src="../static/images/imagelogo.png" class="pull-left">
       <div class="pull-left">{{onepost.location}}</div>
     </div>
-    <div class="content">{{onepost.content}}</div>
+    <div class="content">{{onepost.title}}</div>
+    <div class="content" style="font-size: 14px;">{{onepost.content}}</div>
     
   </div>
   <div class="comment">
@@ -50,5 +52,6 @@
   
 
   
+</section>
 </section>
 {% endblock %}
