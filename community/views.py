@@ -13,10 +13,13 @@ def profile(request):
 
 def new(request):
     return render(request, 'new.html')
+def map(request):
+    return render(request, 'map.html')
 
 def createfeed(request):
     if(request.method=='POST'): 
-        newfeed=Feed()          
+        newfeed=Feed()
+        newfeed.title=request.POST['title']
         newfeed.content=request.POST['content']
         newfeed.location=request.POST['location']
         newfeed.writer = request.user
@@ -46,18 +49,9 @@ def edit(request,feed_id):
 def feedupdate(request,feed_id):
     editfeed=get_object_or_404(Feed,pk=feed_id)
     editfeed.content=request.POST['content']
-    newfeed.writer = request.user
+    editfeed.title=request.POST['title']
+    editfeed.location=request.POST['location']
     editfeed.save()
-
-    for img in request.FILES.getlist('imgs'):
-            # Photo 객체를 하나 생성한다.
-            photo = Photo()
-            # 외래키로 현재 생성한 Post의 기본키를 참조한다.
-            photo.feed = editfeed
-            # imgs로부터 가져온 이미지 파일 하나를 저장한다.
-            photo.image = img
-            # 데이터베이스에 저장
-            photo.save()
     return redirect('/detail/'+str(feed_id))
 
 def feeddelete(request,feed_id):

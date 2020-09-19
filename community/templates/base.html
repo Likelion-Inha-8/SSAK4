@@ -6,6 +6,7 @@
     <title>멍팟</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'style-bin.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -15,7 +16,7 @@
     <nav>
         <div id="nav_container">
             <a href="{%url 'home'%}"><img src="../static/images/logo.png" alt="logo" id="logo"></a>
-            <a href="{%url 'home'%}">지도</a>
+            <a href="{%url 'map'%}">지도</a>
             <a href="{%url 'new'%}">글쓰기</a>
             <a href="{%url 'profile'%}">프로필</a>
             {% if user.is_authenticated %}
@@ -25,7 +26,7 @@
             {% endif %}
         </div>
     </nav>
-    <section>
+    <section style="background-color:#ecf3f0;">
         {% block content %}
         {% endblock %}
     </section>
@@ -34,3 +35,21 @@
 </html>
 
 
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $( document ).ready( function() {
+        $( '.top' ).fadeOut();
+      $( window ).scroll( function() {
+        if ( $( this ).scrollTop() > 200 ) {
+          $( '.top' ).fadeIn();
+        } else {
+          $( '.top' ).fadeOut();
+        }
+      } );
+      $( '.top' ).click( function() {
+        $( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+        return false;
+      } );
+    } );
+  </script>
+<a href="#" class="top"><img src="../static/images/direction.png" style="width:50px; position:fixed; bottom:5%; right:5%;"></a>

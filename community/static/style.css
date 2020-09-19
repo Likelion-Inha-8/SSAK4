@@ -10,7 +10,7 @@
 body {
     width: 100%;
     height: 100%;
-    padding: 100px;
+    padding-top: 70px;
 }
 
 nav {
@@ -23,7 +23,7 @@ nav {
 }
 
 nav > div{
-    background-color:#ecf3f0;
+    background-color:white;
     padding: 20px;
 }
 
@@ -266,3 +266,4 @@ nav a:nth-child(2){
 .footer p{
     margin: 5px;
 }
+

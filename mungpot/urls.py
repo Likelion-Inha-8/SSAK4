@@ -36,4 +36,5 @@ urlpatterns = [
     path('commentcreate/<int:feed_id>', community.views.commentcreate, name='commentcreate'),
     path('commentdelete/<int:feed_id>/<int:comment_id>', community.views.commentdelete, name='commentdelete'),
     path('profile', community.views.profile, name="profile"),
+    path('map', community.views.map, name="map"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

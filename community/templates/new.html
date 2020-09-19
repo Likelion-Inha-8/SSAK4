@@ -3,6 +3,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
+<div class="container">
 <section class="new">
     <div>새 글 쓰기</div>
     <form action="{% url 'createfeed' %}" method="POST" enctype="multipart/form-data"> 
@@ -10,19 +11,25 @@
         <input type="file" name="imgs" class="form-control" multiple>
         <br>
         <div class="form-group">
+            <label for="title">내용</label><br>
+            <input type="text" class="form-control" name="title" id="title" cols="30" rows="1">
+        </div><br>
+        <div class="form-group">
             <label for="content">내용</label><br>
             <textarea name="content" class="form-control" id="content" cols="30" rows="10"></textarea>
         </div><br>
         <div>
             <label for="location">위치</label><br>
-            <input type="text" class="form-control" name="location" id="location" cols="30" rows="1"></input>
+            <input type="text" class="form-control" name="location" id="location" cols="30" rows="1">
         </div>
         <input type="submit" class="form-control" value="글쓰기">
     </form>
 </section>
+</div>
 {% else %}
 <script>
     alert('로그인하세요');
+    history.back();
 </script>
 {% endif %}
 
