@@ -14,14 +14,19 @@ def profile(request):
 def new(request):
     return render(request, 'new.html')
 def map(request):
-    return render(request, 'map.html')
+    feeds = Feed.objects
+    return render(request, 'map.html',{'feeds':feeds})
+
 
 def createfeed(request):
     if(request.method=='POST'): 
         newfeed=Feed()
         newfeed.title=request.POST['title']
         newfeed.content=request.POST['content']
-        newfeed.location=request.POST['location']
+        newfeed.location=request.POST['search-bar']
+        newfeed.lat=request.POST['lat']
+        newfeed.lng=request.POST['lng']
+
         newfeed.writer = request.user
         newfeed.save()
         
