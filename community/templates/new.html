@@ -22,9 +22,11 @@
 
             <div>
                 <label for="location">위치</label><br>
-                <input type="text" class="form-control" name="search-bar" id="search-bar" cols="30" rows="1">
-                <input type="button" value="검색" id="search-btn">
-
+                    <div class="form-group" style="margin-bottom:5px;">
+                        <input type="text" name="search-bar" class="form-control col-sm-9" id="search-bar" style="width:90%; float:left;" placeholder="검색어를 입력해주세요">
+                        <input type="button" class="form-control col-sm-3" value="검색" id="search-btn" style="margin-left : 5px; width:60px;">
+                    </div>
+                <br><br>
                 <div id="map" style="width:100%;height:350px;"></div>
                 <p><em>지도를 클릭해주세요!</em></p>
                 <div id="clickLatlng"></div>
