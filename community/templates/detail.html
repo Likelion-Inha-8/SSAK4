@@ -32,7 +32,7 @@
     {% endfor %}  
     <div class="spot">
       <img src="../static/images/imagelogo.png" class="pull-left">
-      <div class="pull-left">{{onepost.location}}</div>
+      <div class="pull-left"><a href="{%url 'map'%}">{{onepost.location}}</a></div>
     </div>
     <div class="content">{{onepost.title}}</div>
     <div class="content" style="font-size: 14px;">{{onepost.content}}</div>
