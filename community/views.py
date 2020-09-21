@@ -1,22 +1,45 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Feed, FeedComment, Photo
 
-
+lat = "37.449403"
+lng = "126.65346"
 # Create your views here.
 def home(request):
+    global lat
+    global lng
+    lat = "37.449403"
+    lng = "126.65346"
     feeds = Feed.objects
     return render(request, 'home.html', {'feeds' : feeds})
 
 def profile(request):
+    global lat
+    global lng
+    lat = "37.449403"
+    lng = "126.65346"
     feeds = Feed.objects
     return render(request, 'profile.html',{'feeds':feeds})
 
 def new(request):
+    global lat
+    global lng
+    lat = "37.449403"
+    lng = "126.65346"
     return render(request, 'new.html')
+
 def map(request):
     feeds = Feed.objects
-    return render(request, 'map.html',{'feeds':feeds})
+    global lat
+    global lng
+    return render(request, 'map.html',{'feeds':feeds, 'lat':lat ,'lng':lng})
 
+def loc(request):
+    if(request.method=='POST'):
+        global lat 
+        lat = request.POST['lat']
+        global lng 
+        lng = request.POST['lng']
+    return redirect('map')
 
 def createfeed(request):
     if(request.method=='POST'): 
@@ -43,6 +66,10 @@ def createfeed(request):
     return redirect('home')
 
 def detail(request, feed_id):
+    global lat
+    global lng
+    lat = "37.449403"
+    lng = "126.65346"
     onepost=get_object_or_404(Feed,pk=feed_id)
     comments = onepost.feedcomment_set.all()
     return render(request,'detail.html',{'onepost':onepost, 'comments':comments})

@@ -1,15 +1,30 @@
 {% extends 'base.html' %}
  
 {% block content %}
+<style>
+  *{
+    overflow-x: hidden;
+  }
+</style>
 <section class="container">
 <section class="detail">
-  <div class="header">
+  <div>
+  <div class="header" style="float:right;">
     {% if request.user == onepost.writer %}
       <a href="{% url 'edit' onepost.id %}">수정</a>
       <a href="{% url 'delete' onepost.id %}">삭제</a>
     {% endif %}
     <a href="{% url 'home' %}">홈으로</a>
-    <div class="date">{{onepost.created_at}}</div>
+    <div class="date">{{onepost.created_at|date:'Y년 m월 d일 H시i분' }} &#128339 </div>
+  </div>
+  <div style="float:left;">
+    <br>
+    {% if request.user == onepost.writer %}
+    <a href="{% url 'profile' %}" style="font-size:20px; text-decoration: none; color:#28daaf;"><strong>&#128054 {{onepost.writer}}</strong></a>
+    {% else %}
+    <a href="#" style="font-size:20px; text-decoration: none; color :#28daaf;"><strong>&#128054 {{onepost.writer}}</strong></a>
+    {% endif %}
+  </div>
   </div>
   <div>
     {% for photo in onepost.photo_set.all%}
