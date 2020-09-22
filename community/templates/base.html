@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <link rel="shortcut icon" href="../static/images/favicon.ico"/>
 </head>
-<body>
+<body style="background-color:#ecf3f0; overflow-x: hidden;">
     <nav>
         <div id="nav_container">
             <a href="{%url 'home'%}"><img src="../static/images/logo.png" alt="logo" id="logo"></a>
@@ -26,7 +25,7 @@
             {% endif %}
         </div>
     </nav>
-    <section style="background-color:#ecf3f0; overflow-x: hidden;">
+    <section>
         {% block content %}
         {% endblock %}
     </section>
