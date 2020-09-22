@@ -69,6 +69,7 @@ nav a:nth-child(2){
     color: #28daaf;
     background-color: #fbfbfb;
     margin-bottom: 30px;
+    border: 1px solid #f0f0f0;
 }
 
 .login div, a{
@@ -108,6 +109,13 @@ nav a:nth-child(2){
     display: inline;
 }
 
+.signup input[type=submit]{
+    font-weight: 900;
+    color: #28daaf;
+    background-color: #fbfbfb;
+    margin-bottom: 30px;
+    border: 1px solid #f0f0f0;
+}
 
 .signup section{
     margin: 0 auto;
@@ -263,6 +271,19 @@ nav a:nth-child(2){
     font-weight: 700;
     color: #28daaf;
 }
+
+.spot a{
+    color: #28daaf;
+    font-weight: 700;
+}
+
+.spot a:hover {
+    text-decoration: none;
+    font-weight: 700;
+    color: #d1d1d1;
+}
+
+
 .footer p{
     margin: 5px;
 }

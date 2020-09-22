@@ -1,12 +1,32 @@
 /* home,profile css */
 
 .container{
-    margin: 80px;
+    margin: 80px auto;
     border: 1px solid #f0f0f0;
     margin-top:40px; 
     padding-top:40px;
     padding-bottom: 40px;
     background-color: white;
+    border-radius: 15px;
+    font-size: 17px;
+}
+
+.information {
+    margin: 20px 20px 20px 30px;
+    font-size: 19px;
+
+}
+
+.information strong {
+    color: #28daaf;
+}
+
+.information-image {
+    margin-left: 25px;
+}
+
+.profile {
+    margin: 15px;
 }
 
 .img_container {

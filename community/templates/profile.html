@@ -14,16 +14,17 @@
     }
 </script>
 <div class="container" style="margin-top:20px; padding-top:20px;">
-    <h2>프로필</h2>
-    <div style="width: 100px; height: 100px; border-radius: 70%; overflow: hidden;"><img src="{{user.dog_Image.url}}" style="width:100%; height:100%;"></div>
-    아이디 : {{request.user }}<br>
-    이름 : {{user.dog_name}}<br>
-    견종 : {{user.dog_type}}<br>
-    출생년도 : {{user.dog_birth_year}}<br>
+    <div class="information-image pull-left" style="width: 150px; height: 150px; border-radius: 70%; overflow: hidden;" class="profile "><img src="{{user.dog_Image.url}}" style="width:100%; height:100%;"></div>
+    <div class="information pull-left">
+        아이디 : <strong>{{request.user }}</strong><br>
+        이름 : <strong>{{user.dog_name}}</strong><br>
+        견종 : <strong>{{user.dog_type}}</strong><br>
+        출생년도 : <strong>{{user.dog_birth_year}}</strong><br>
+    </div>
+    
     
 </div>
-<div class="container" style="margin-top:20px; padding-top:20px; background-color:white;">
-    <h2 style="text-align: center; color:#28daaf;">내가 올린 피드</h2>
+<div class="container" style="padding-top:20px; background-color:white;">
         {% for feed in feeds.all reversed%}
             {% if request.user == feed.writer %}
                 {% for photo in feed.photo_set.all%}
